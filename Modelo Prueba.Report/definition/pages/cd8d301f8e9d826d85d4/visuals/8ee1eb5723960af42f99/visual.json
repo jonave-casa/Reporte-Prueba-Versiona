@@ -1,0 +1,140 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.2.0/schema.json",
+  "name": "8ee1eb5723960af42f99",
+  "position": {
+    "x": 1066,
+    "y": 0,
+    "z": 1003,
+    "height": 212,
+    "width": 214,
+    "tabOrder": 2003
+  },
+  "visual": {
+    "visualType": "kpi",
+    "query": {
+      "queryState": {
+        "Goal": {
+          "projections": [
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Dim_Proyectos1"
+                        }
+                      },
+                      "Property": "Ubicación"
+                    }
+                  },
+                  "Function": 5
+                }
+              },
+              "queryRef": "CountNonNull(Dim_Proyectos1.Ubicación)",
+              "nativeQueryRef": "Recuento de Ubicación"
+            }
+          ]
+        },
+        "Indicator": {
+          "projections": [
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Dim_Proyectos1"
+                        }
+                      },
+                      "Property": "Total Unds en Venta"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(Dim_Proyectos1.Total Unds en Venta)",
+              "nativeQueryRef": "Suma de Total Unds en Venta"
+            }
+          ]
+        },
+        "TrendLine": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Dim_Proyectos1"
+                    }
+                  },
+                  "Property": "Total Unds Proyecto"
+                }
+              },
+              "queryRef": "Dim_Proyectos1.Total Unds Proyecto",
+              "nativeQueryRef": "Total Unds Proyecto"
+            }
+          ]
+        }
+      }
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "e9156c9272e6888b523b",
+        "field": {
+          "Aggregation": {
+            "Expression": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "Dim_Proyectos1"
+                  }
+                },
+                "Property": "Total Unds en Venta"
+              }
+            },
+            "Function": 0
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "6e8dd9cc9250fc156bb6",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Dim_Proyectos1"
+              }
+            },
+            "Property": "Total Unds Proyecto"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "39333db61481235b9e9e",
+        "field": {
+          "Aggregation": {
+            "Expression": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "Dim_Proyectos1"
+                  }
+                },
+                "Property": "Ubicación"
+              }
+            },
+            "Function": 5
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
+  }
+}
