@@ -1,0 +1,113 @@
+table Historico_y_Forms
+	lineageTag: b2efdda2-cade-4c3a-b91d-87639fb45eec
+
+	column Fecha
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: a7800788-7558-4ec4-825f-c22f2b398162
+		summarizeBy: none
+		sourceColumn: Fecha
+
+		variation Variación
+			isDefault
+			relationship: a2577ed1-1f71-4017-9720-dc23d12bd4e8
+			defaultHierarchy: LocalDateTable_317122f4-8526-4be2-9695-e7a3ba3429c2.'Jerarquía de fechas'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column ID_Proyecto
+		dataType: int64
+		formatString: 0
+		lineageTag: 5600d391-8d80-4fdf-93fa-d3f12cf0e6ec
+		summarizeBy: none
+		sourceColumn: ID_Proyecto
+
+		annotation SummarizationSetBy = Automatic
+
+	column Proyecto
+		dataType: string
+		lineageTag: 9579133e-c04f-411c-a44e-1587c9860974
+		summarizeBy: none
+		sourceColumn: Proyecto
+
+		annotation SummarizationSetBy = Automatic
+
+	column Ventas
+		dataType: int64
+		formatString: 0
+		lineageTag: f0da5578-7a86-48aa-9b81-381d4dcb4f7c
+		summarizeBy: sum
+		sourceColumn: Ventas
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Meta mensual'
+		dataType: int64
+		formatString: 0
+		lineageTag: 1d3f2a5e-c462-4e9f-993b-1b5b0db4df32
+		summarizeBy: sum
+		sourceColumn: Meta mensual
+
+		annotation SummarizationSetBy = Automatic
+
+	column Desistimientos
+		dataType: int64
+		formatString: 0
+		lineageTag: 457777a1-4d8f-41d8-8b6b-790970e8e566
+		summarizeBy: sum
+		sourceColumn: Desistimientos
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Ventas acumuladas'
+		dataType: int64
+		formatString: 0
+		lineageTag: 34161a06-d286-41d5-a9d3-04cc31ceed08
+		summarizeBy: sum
+		sourceColumn: Ventas acumuladas
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Desistimientos acumulados'
+		dataType: int64
+		formatString: 0
+		lineageTag: d8fe9237-e13d-4e37-a133-15d5c4a07b92
+		summarizeBy: sum
+		sourceColumn: Desistimientos acumulados
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Unidades disponibles'
+		dataType: int64
+		formatString: 0
+		lineageTag: 83814d6d-d013-4b8f-aa3d-015e31422126
+		summarizeBy: sum
+		sourceColumn: Unidades disponibles
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Acumulado Meta'
+		dataType: int64
+		formatString: 0
+		lineageTag: 61c4d1b1-533f-4c07-abda-709b6ac1a801
+		summarizeBy: sum
+		sourceColumn: Acumulado Meta
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Historico_y_Forms = m
+		mode: import
+		source =
+				let
+				    Origen = Excel.Workbook(File.Contents("D:\Jonathan V\Descargas\Informe Ventas 2025-06.xlsx"), null, true),
+				    Historico_y_Forms_Table = Origen{[Item="Historico_y_Forms",Kind="Table"]}[Data],
+				    #"Tipo cambiado" = Table.TransformColumnTypes(Historico_y_Forms_Table,{{"Fecha", type date}, {"ID_Proyecto", Int64.Type}, {"Proyecto", type text}, {"Ventas", Int64.Type}, {"Meta mensual", Int64.Type}, {"Desistimientos", Int64.Type}, {"Ventas acumuladas", Int64.Type}, {"Desistimientos acumulados", Int64.Type}, {"Unidades disponibles", Int64.Type}, {"Acumulado Meta", Int64.Type}})
+				in
+				    #"Tipo cambiado"
+
+	annotation PBI_NavigationStepName = Navegación
+
+	annotation PBI_ResultType = Table
+

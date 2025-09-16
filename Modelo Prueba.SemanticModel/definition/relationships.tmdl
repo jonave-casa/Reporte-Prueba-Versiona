@@ -1,0 +1,19 @@
+relationship e3b502a1-3495-49e4-856a-af53f6c3773d
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Dim_Proyectos1.'Fecha inicio de Ventas'
+	toColumn: LocalDateTable_6ad970d9-f553-4f68-9a93-dfb587b3583e.Date
+
+relationship 6de69a48-1a38-4a85-96ba-8a5f16f50dc9
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Dim_Proyectos1.'Fecha de terminacion'
+	toColumn: LocalDateTable_c8d60e32-b055-47c6-be0f-d5fe009e492a.Date
+
+relationship a2577ed1-1f71-4017-9720-dc23d12bd4e8
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Historico_y_Forms.Fecha
+	toColumn: LocalDateTable_317122f4-8526-4be2-9695-e7a3ba3429c2.Date
+
+relationship AutoDetected_1d7fc087-8eb3-43d5-867b-fdc9349760ba
+	fromColumn: Historico_y_Forms.ID_Proyecto
+	toColumn: Dim_Proyectos1.ID_Proyecto
+

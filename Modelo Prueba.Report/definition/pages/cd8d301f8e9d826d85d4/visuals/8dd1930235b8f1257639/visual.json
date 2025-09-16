@@ -1,0 +1,68 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.2.0/schema.json",
+  "name": "8dd1930235b8f1257639",
+  "position": {
+    "x": 568.66718628215119,
+    "y": 0,
+    "z": 1000,
+    "height": 211.50428682774745,
+    "width": 486.85892439594693
+  },
+  "visual": {
+    "visualType": "listSlicer",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Historico_y_Forms"
+                    }
+                  },
+                  "Property": "Proyecto"
+                }
+              },
+              "queryRef": "Historico_y_Forms.Proyecto",
+              "nativeQueryRef": "Proyecto",
+              "active": true
+            }
+          ]
+        }
+      }
+    },
+    "objects": {
+      "data": [
+        {
+          "properties": {}
+        }
+      ],
+      "general": [
+        {
+          "properties": {}
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "06fedbfc52f9f92c7e03",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Historico_y_Forms"
+              }
+            },
+            "Property": "Proyecto"
+          }
+        },
+        "type": "Categorical"
+      }
+    ]
+  }
+}

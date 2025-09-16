@@ -1,0 +1,25 @@
+model Model
+	culture: es-ES
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: es-CO
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+annotation PBI_QueryOrder = ["Dim_Proyectos1","Historico_y_Forms"]
+
+annotation __PBI_TimeIntelligenceEnabled = 1
+
+annotation PBIDesktopVersion = 2.146.1454.0 (25.08)+901d6c338d1dea81ac3e53073ffb10469f0f37b8
+
+annotation PBI_ProTooling = ["DevMode"]
+
+ref table Dim_Proyectos1
+ref table DateTableTemplate_24587725-a22a-462b-bccf-afb619391440
+ref table LocalDateTable_6ad970d9-f553-4f68-9a93-dfb587b3583e
+ref table LocalDateTable_c8d60e32-b055-47c6-be0f-d5fe009e492a
+ref table Historico_y_Forms
+ref table LocalDateTable_317122f4-8526-4be2-9695-e7a3ba3429c2
+
+ref cultureInfo es-ES
+

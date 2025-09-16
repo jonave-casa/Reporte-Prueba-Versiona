@@ -1,0 +1,116 @@
+table Dim_Proyectos1
+	lineageTag: e1b0338a-317f-4603-9857-ed4fcee15bdf
+
+	column ID_Proyecto
+		dataType: int64
+		formatString: 0
+		lineageTag: 2ca5b432-4a73-47ce-89a3-7f492493af41
+		summarizeBy: none
+		sourceColumn: ID_Proyecto
+
+		annotation SummarizationSetBy = Automatic
+
+	column Proyecto
+		dataType: string
+		lineageTag: d6d733c5-0f29-4e95-8381-0f9d0706c0de
+		summarizeBy: none
+		sourceColumn: Proyecto
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Tipo Proyecto'
+		dataType: string
+		lineageTag: fa8887ac-6d4b-4eb3-98de-7a789416434c
+		summarizeBy: none
+		sourceColumn: Tipo Proyecto
+
+		annotation SummarizationSetBy = Automatic
+
+	column Sucursal
+		dataType: string
+		lineageTag: a3afed7c-3e2e-4d5a-8cf7-e58327b8f121
+		summarizeBy: none
+		sourceColumn: Sucursal
+
+		annotation SummarizationSetBy = Automatic
+
+	column Ubicación
+		dataType: string
+		lineageTag: 7f90c39d-3e2d-49cb-9a02-36ce2c83a155
+		summarizeBy: none
+		sourceColumn: Ubicación
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Total Unds Proyecto'
+		dataType: int64
+		formatString: 0
+		lineageTag: b687376a-ff79-4350-a5e0-c18cf7d034b7
+		summarizeBy: sum
+		sourceColumn: Total Unds Proyecto
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Total Unds en Venta'
+		dataType: int64
+		formatString: 0
+		lineageTag: 24e8f5ad-d401-4d0a-b0f6-689ce5d4cf1a
+		summarizeBy: sum
+		sourceColumn: Total Unds en Venta
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Fecha inicio de Ventas'
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: b1ea599e-1474-4d43-bd88-a768caded4a5
+		summarizeBy: none
+		sourceColumn: Fecha inicio de Ventas
+
+		variation Variación
+			isDefault
+			relationship: e3b502a1-3495-49e4-856a-af53f6c3773d
+			defaultHierarchy: LocalDateTable_6ad970d9-f553-4f68-9a93-dfb587b3583e.'Jerarquía de fechas'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Fecha de terminacion'
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 495f6c03-c7a0-4d63-ac6a-808cbd778c30
+		summarizeBy: none
+		sourceColumn: Fecha de terminacion
+
+		variation Variación
+			isDefault
+			relationship: 6de69a48-1a38-4a85-96ba-8a5f16f50dc9
+			defaultHierarchy: LocalDateTable_c8d60e32-b055-47c6-be0f-d5fe009e492a.'Jerarquía de fechas'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column Estado
+		dataType: string
+		lineageTag: e0ad3f3b-18d2-4c38-be26-ea93b996e33e
+		summarizeBy: none
+		sourceColumn: Estado
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Dim_Proyectos1 = m
+		mode: import
+		source =
+				let
+				    Origen = Excel.Workbook(File.Contents("D:\Jonathan V\Descargas\Informe Ventas 2025-06.xlsx"), null, true),
+				    Dim_Proyectos_Table = Origen{[Item="Dim_Proyectos",Kind="Table"]}[Data],
+				    #"Tipo cambiado" = Table.TransformColumnTypes(Dim_Proyectos_Table,{{"ID_Proyecto", Int64.Type}, {"Proyecto", type text}, {"Tipo Proyecto", type text}, {"Sucursal", type text}, {"Ubicación", type text}, {"Total Unds Proyecto", Int64.Type}, {"Total Unds en Venta", Int64.Type}, {"Fecha inicio de Ventas", type date}, {"Fecha de terminacion", type date}, {"Estado", type text}})
+				in
+				    #"Tipo cambiado"
+
+	annotation PBI_NavigationStepName = Navegación
+
+	annotation PBI_ResultType = Table
+
