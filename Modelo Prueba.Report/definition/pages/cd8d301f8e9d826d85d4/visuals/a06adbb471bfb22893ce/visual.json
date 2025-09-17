@@ -53,5 +53,42 @@
       }
     },
     "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "69bf1f4523ea7a212efc",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Dim_Proyectos1"
+              }
+            },
+            "Property": "Proyecto"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "00ad5cb25c960fb3129a",
+        "field": {
+          "Aggregation": {
+            "Expression": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "Dim_Proyectos1"
+                  }
+                },
+                "Property": "Total Unds en Venta"
+              }
+            },
+            "Function": 0
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
   }
 }
