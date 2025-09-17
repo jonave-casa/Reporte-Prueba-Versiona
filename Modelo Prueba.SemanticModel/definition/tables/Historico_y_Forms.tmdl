@@ -101,7 +101,7 @@ table Historico_y_Forms
 		mode: import
 		source =
 				let
-				    Origen = Excel.Workbook(File.Contents("D:\Jonathan V\Descargas\Informe Ventas 2025-06.xlsx"), null, true),
+				    Origen = Excel.Workbook(File.Contents("D:\Jonathan V\Documentos\GitHub\Reporte-Prueba-Versiona\Data\Informe Ventas 2025-06.xlsx"), null, true),
 				    Historico_y_Forms_Table = Origen{[Item="Historico_y_Forms",Kind="Table"]}[Data],
 				    #"Tipo cambiado" = Table.TransformColumnTypes(Historico_y_Forms_Table,{{"Fecha", type date}, {"ID_Proyecto", Int64.Type}, {"Proyecto", type text}, {"Ventas", Int64.Type}, {"Meta mensual", Int64.Type}, {"Desistimientos", Int64.Type}, {"Ventas acumuladas", Int64.Type}, {"Desistimientos acumulados", Int64.Type}, {"Unidades disponibles", Int64.Type}, {"Acumulado Meta", Int64.Type}})
 				in

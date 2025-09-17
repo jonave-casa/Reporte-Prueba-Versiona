@@ -104,7 +104,7 @@ table Dim_Proyectos1
 		mode: import
 		source =
 				let
-				    Origen = Excel.Workbook(File.Contents("D:\Jonathan V\Descargas\Informe Ventas 2025-06.xlsx"), null, true),
+				    Origen = Excel.Workbook(File.Contents("D:\Jonathan V\Documentos\GitHub\Reporte-Prueba-Versiona\Data\Informe Ventas 2025-06.xlsx"), null, true),
 				    Dim_Proyectos_Table = Origen{[Item="Dim_Proyectos",Kind="Table"]}[Data],
 				    #"Tipo cambiado" = Table.TransformColumnTypes(Dim_Proyectos_Table,{{"ID_Proyecto", Int64.Type}, {"Proyecto", type text}, {"Tipo Proyecto", type text}, {"Sucursal", type text}, {"Ubicación", type text}, {"Total Unds Proyecto", Int64.Type}, {"Total Unds en Venta", Int64.Type}, {"Fecha inicio de Ventas", type date}, {"Fecha de terminacion", type date}, {"Estado", type text}})
 				in
